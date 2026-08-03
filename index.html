@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>WHIRL · NC²□ · GEO‑ID · 81‑Vektor</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { color:#6cf; margin-bottom:30px; }
+
+#geo {
+    width: 360px;
+    height: 360px;
+    margin: 40px auto;
+    border: 3px solid #6cf;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 9s linear infinite;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background:#0f0;
+    border-radius:50%;
+    position:absolute;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+pre {
+    background:#111;
+    padding:20px;
+    border-left:3px solid #6cf;
+    white-space:pre-wrap;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>WHIRL · GEO‑ID · 81‑Vektor‑Rotation</h1>
+
+<div id="geo"></div>
+
+<pre>
+GEO‑ID: WHIRL‑Vektor
+Form: 9×9 Rotation
+Felder: 81
+Typ: NC²□ Drift‑Geometrie
+Funktion: Erkennungs‑Bewegung / ID‑Stempel
+</pre>
+
+<script>
+// WHIRL als Vektor (81 Punkte)
+const geo = document.getElementById("geo");
+const count = 81;
+const radius = 160;
+
+for(let i=0; i<count; i++){
+    const dot = document.createElement("div");
+    dot.className = "dot";
+
+    const angle = (i / count) * Math.PI * 2;
+    const x = Math.cos(angle) * radius + 180 - 6;
+    const y = Math.sin(angle) * radius + 180 - 6;
+
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+
+    geo.appendChild(dot);
+}
+</script>
+
+</body>
+</html>
